@@ -1,10 +1,13 @@
 .env
 keys.txt
-secrets.json
 
 rag_engine.py
+rag_chat_v2.py
+iitd_data.txt
+
 
 chroma_db/
+chroma_db_pro/
 
 __pycache__/
 *.py[cod]

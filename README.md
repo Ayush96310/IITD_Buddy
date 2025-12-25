@@ -1,28 +1,41 @@
-# IITD Buddy: Privacy-First RAG Chatbot
+# IITD Buddy Pro: RAG-Powered Knowledge Assistant
 
-**A local Retrieval-Augmented Generation (RAG) system that answers queries about institutional policies (Hostel Rules, Academics) using strict ground-truth documents.**
+**A Full-Stack RAG Application that allows users to chat with institutional documents (PDFs) via a "WhatsApp-style" interface.**
 
-## 🚀 Overview
-Standard LLMs hallucinate specific details about private institutions. IITD Buddy solves this by using a **Local RAG Pipeline** to retrieve exact clauses from a secure knowledge base before generating an answer.
-
-* **Privacy:** Vector embeddings and storage are handled 100% locally using ChromaDB.
-* **Accuracy:** Answers are generated using **Llama 3** (via Groq) with a strict `temperature=0` setting to prevent hallucination.
+## 🚀 Features
+* **📄 Dynamic PDF Ingestion:** Drag-and-drop support for any PDF (Rules, Research Papers, Syllabi).
+* **🧠 Conversation Memory:** Remembers context from previous turns (e.g., "What is the fine?" -> "Who do I pay **it** to?").
+* **🛡️ Privacy-First:** Vector embeddings and storage are handled 100% locally using **ChromaDB**.
+* **🤖 Llama 3 Intelligence:** Uses Groq's LPU for sub-second responses grounded in strict facts.
 
 ## 🛠️ Tech Stack
-* **Orchestration:** LangChain (2025 Updated Stack)
-* **Vector DB:** ChromaDB (Persistent Local Storage)
-* **Inference:** Llama-3-70b via Groq API
-* **Embeddings:** HuggingFace / Sentence-Transformers
+* **Frontend:** Streamlit
+* **Orchestration:** LangChain (2025 Stack)
+* **Vector DB:** ChromaDB (Local Persistence)
+* **Model:** Llama-3-70b via Groq API
+* **Embeddings:** HuggingFace (`all-MiniLM-L6-v2`)
 
-## ⚡ How to Run
-### 1. **Install Dependencies:**
+## ⚡ How to Run locally
+### 1. **Clone the Repo:**
    ```bash
-   pip install -r requirements.txt
+   git clone [https://github.com/Ayush96310/IITD_Buddy.git](https://github.com/Ayush96310/IITD_Buddy.git)
+   cd IITD_Buddy
 
 ```
-### 2. **Setup Credentials**
-Open `rag_chat_v2.py` and replace `ENTER_YOUR_GROQ_API_KEY_HERE` with your free Groq API key.
-
-### 3. **Run the Chatbot:**
+### 2. **Install Dependencies**
 ```bash
-python rag_chat_v2.py
+pip install -r requirements.txt
+
+```
+### 3. **Launch the App**
+```bash
+streamlit run app.py
+```
+### 4. **Usage:**
+
+    Enter your Groq API Key in the Sidebar.
+
+    Upload a PDF.
+
+    Start chatting!
+
