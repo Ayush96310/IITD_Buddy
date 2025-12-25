@@ -1,9 +1,13 @@
-chroma_db/
-__pycache__/
-venv/
 .env
+keys.txt
+secrets.json
 
-*.pyc
-*.pyo
+rag_engine.py
+
+chroma_db/
+
+__pycache__/
+*.py[cod]
+venv/
+.venv/
 .DS_Store
-Thumbs.db

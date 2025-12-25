@@ -1,27 +1,18 @@
-# IITD Buddy: Privacy-First RAG Search Engine
+# IITD Buddy: Privacy-First RAG Chatbot
 
-**A local Retrieval-Augmented Generation (RAG) system designed to query internal institutional documents (Hostel Rules, Academic Policies) without sending private data to cloud LLMs.**
+**A local Retrieval-Augmented Generation (RAG) system that answers queries about institutional policies (Hostel Rules, Academics) using strict ground-truth documents.**
 
-![RAG Architecture](https://miro.medium.com/v2/resize:fit:1400/1*dHQqI2d_i_Pty0jK9Qx8-Q.png)
-*(Standard RAG Architecture implemented locally)*
+## 🚀 Overview
+Standard LLMs hallucinate specific details about private institutions. IITD Buddy solves this by using a **Local RAG Pipeline** to retrieve exact clauses from a secure knowledge base before generating an answer.
 
-## 🚀 The Problem
-General LLMs (like ChatGPT) hallucinate when asked about specific, private institutional rules.
-* **Example:** "What is the fine for late entry at Aravali Hostel?" -> ChatGPT guesses.
-* **Constraint:** Institutional data (student details, exact fines) cannot be uploaded to public API endpoints due to privacy concerns.
-
-## 💡 The Solution
-IITD Buddy is a **Local RAG Pipeline** that runs 100% on-device:
-1.  **Ingestion:** Loads raw policy documents (`.txt`).
-2.  **Vectorization:** Chunks text and creates embeddings using **Sentence-BERT (`all-MiniLM-L6-v2`)**.
-3.  **Storage:** Indexes vectors in **ChromaDB** (Persistent Local Vector Store).
-4.  **Retrieval:** Performs Semantic Search to retrieve the exact clause (e.g., "Fine is Rs. 500") rather than generating a probabilistic guess.
+* **Privacy:** Vector embeddings and storage are handled 100% locally using ChromaDB.
+* **Accuracy:** Answers are generated using **Llama 3** (via Groq) with a strict `temperature=0` setting to prevent hallucination.
 
 ## 🛠️ Tech Stack
-* **Orchestration:** LangChain
-* **Vector Database:** ChromaDB
-* **Embeddings:** HuggingFace / SBERT
-* **Language:** Python 3.10+
+* **Orchestration:** LangChain (2025 Updated Stack)
+* **Vector DB:** ChromaDB (Persistent Local Storage)
+* **Inference:** Llama-3-70b via Groq API
+* **Embeddings:** HuggingFace / Sentence-Transformers
 
 ## ⚡ How to Run
 ### 1. **Install Dependencies:**
@@ -29,9 +20,9 @@ IITD Buddy is a **Local RAG Pipeline** that runs 100% on-device:
    pip install -r requirements.txt
 
 ```
-### 2. **Add Data**
-Update `iitd_data.txt` with your institutional rules and policies.
+### 2. **Setup Credentials**
+Open `rag_chat_v2.py` and replace `ENTER_YOUR_GROQ_API_KEY_HERE` with your free Groq API key.
 
-### 3. **Run the Engine**
+### 3. **Run the Chatbot:**
 ```bash
-python rag_engine.py
+python rag_chat_v2.py
