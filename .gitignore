@@ -1,0 +1,9 @@
+chroma_db/
+__pycache__/
+venv/
+.env
+
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
